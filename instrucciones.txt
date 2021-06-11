@@ -6,3 +6,8 @@ lo que se debe completar es:
 []se tiene que la seccion para poder guardar archivos desde la página web en el archivo "auth.py"
 
 [] hacer la seccion de formulario en los templates
+
+
+https://youtu.be/MvVqjQqSdM4
+https://youtu.be/dam0GPOAvVI
+https://youtu.be/IgCfZkR8wME
