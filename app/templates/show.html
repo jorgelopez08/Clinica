@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+    {% for elemento in datos %}
+        <li class="show-element">
+            <h2>Id: {{ elemento.id }}</h2>
+            <h2>Nombre: {{elemento.nombre}} {{ elemento.apellido_paterno}} {{ elemento.apellido_materno}}</h2>
+            <h3>Fecha de nacimiento: {{ elemento.fecha_nacimiento}}</h3> 
+            {% if title=="Pacientes"%}
+                <h3>Padecimiento: {{ elemento.padecimiento}}</h3> 
+                <h3>Alergias: {{ elemento.alergias}}</h3> 
+            {% elif title == "Personal médico" %}
+                {% for x in tipo%}
+                    {% if x.id == elemento.tipo_personal %}
+                    <h3>Tipo de personal médico: {{x.descripcion}}</h3> 
+                    {% endif %}
+                {% endfor %}
+                {% if extra %}
+                    {% for y in extra%}
+                        {% if y.id == elemento.especialidad %}
+                        <h3>Especialidad: {{ y.descripcion }}</h3> 
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% elif title == "Administrativos" %}
+            
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endblock %}

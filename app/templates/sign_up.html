@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+    Registro
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="register-main">
+        <h1>Registrarse</h1>
+        <div>
+            <ul>
+                <li>
+                    <a href="{{ url_for('auth.reg_personal') }}">Personal</a>
+                </li>
+                <li>
+                    <a href="">Pacientes</a>
+                </li>
+                <li>
+                    <a href="">Procedimientos</a>
+                </li>
+                <li>
+                    <a href="">Mantenimiento</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</main>
+{% endblock %}

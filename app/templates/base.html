@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <title>{% block title%}{% endblock %} | Clinica</title>
+</head>
+<body>
+    <nav class="main-navbar">
+        <ul class="top-navbar">
+            <li>
+                <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+            </li>
+            <li>
+                <a href="{{ url_for('auth.register')}}">Registrarse</a>
+            </li>
+        </ul>
+        <ul class="bot-navbar">
+            <li>
+                <a href="{{ url_for('views.home')}}">Inicio</a>
+            </li>
+            <li>
+                <a href="{{ url_for('views.doctores') }}">Doctores</a>
+            </li>
+            <li>
+                <a href="{{ url_for('views.procedimientos') }}">Procedimientos</a>
+            </li>
+            <li>
+                <a href="{{ url_for('views.admin') }}">Administración</a>
+            </li>
+            <li>
+                <a href="{{ url_for('views.pacientes') }}">Pacientes</a>
+            </li>
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

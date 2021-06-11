@@ -1,0 +1,8 @@
+en la carpeta app se encuentran los archivos del sitio web, esos son los que se tienen que editar
+
+lo que se debe completar es:
+[]terminar de codificar en "views.py" todos las secciones que muestras datos, ya hay varios ejemplos hechos
+
+[]se tiene que la seccion para poder guardar archivos desde la página web en el archivo "auth.py"
+
+[] hacer la seccion de formulario en los templates

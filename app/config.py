@@ -1,0 +1,5 @@
+
+class Config:
+    SECRET_KEY = 'SUPER SECRET STRING'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:091008@192.168.68.129/clinica'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False

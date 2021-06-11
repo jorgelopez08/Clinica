@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+    Registro Personal
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="main-form">
+        <h1>Registro de personal</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter password">
+            </div>
+            
+        </form>
+    </section>
+</main>
+{% endblock %}
