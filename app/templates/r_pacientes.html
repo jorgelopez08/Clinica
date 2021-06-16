@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+    Registro Personal
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="main-form">
+        <h1>Registro de personal</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="text">Nombre</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese nombre">
+            </div>
+            <div class="form-group">
+                <label for="text">Apellido materno</label>
+                <input type="text" name="ap_mat" id="ap_mat" class="form-control" placeholder="Ingrese apellido materno">
+            </div>
+            <div class="form-group">
+                <label for="text">Apellido paterno</label>
+                <input type="text" name="ap_pat" id="ap_pat" class="form-control" placeholder="Ingrese apellido paterno">
+            </div>
+            <div class="form-group">
+                <label for="birthday">Fecha de nacimiento</label>
+                <input type="date" id="cumpleanos" name="cumpleanos">
+            </div>
+            <div class="form-group">
+                <label for="text">Alergias</label>
+                <input type="text" name="alergias" id="alergias" class="form-control" placeholder="Alergias (separadas por comas ',')">
+            </div>
+            <div class="form-group">
+                <label for="text">Padecimiento</label>
+                <input type="text" name="Padecimiento" id="Padecimiento" class="form-control" placeholder="Ingrese padecimiento">
+            </div>
+            <input type="submit" value="submit">
+        </form>
+    </section>
+</main>
+{% endblock %}

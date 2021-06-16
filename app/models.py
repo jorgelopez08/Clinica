@@ -1,9 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
+
 class Pacientes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(20))
-    #curp = db.Column(db.String(19), unique=True)
+    #curp = db.Column(db.String(18), unique=True)
+    fecha_nacimiento = db.Column(db.Date)
     apellido_paterno = db.Column(db.String(20))
     apellido_materno = db.Column(db.String(20))
     alergias = db.Column(db.String(200))
@@ -12,7 +14,7 @@ class Pacientes(db.Model):
 class Personal_medico(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     tipo_personal = db.Column(db.Integer, db.ForeignKey("Tipo_personal.id"), nullable=False)
-    curp = db.Column(db.String(19), unique=True)
+    curp = db.Column(db.String(18), unique=True)
     nombre = db.Column(db.String(20))
     apellido_paterno = db.Column(db.String(20))
     apellido_materno = db.Column(db.String(20))

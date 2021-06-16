@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-    Registro Personal
+    Registro de Personal
 {% endblock %}
 
 {% block content %}
@@ -9,14 +9,40 @@
         <h1>Registro de personal</h1>
         <form method="POST">
             <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="Enter email">
+                <label for="text">Nombre</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese nombre">
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Enter password">
+                <label for="text">Apellido paterno</label>
+                <input type="text" name="ap_pat" id="ap_pat" class="form-control" placeholder="Ingrese apellido paterno">
             </div>
-            
+            <div class="form-group">
+                <label for="text">Apellido materno</label>
+                <input type="text" name="ap_mat" id="ap_mat" class="form-control" placeholder="Ingrese apellido materno">
+            </div>
+            <div class="form-group">
+                <label for="text">CURP</label>
+                <input type="text" name="curp" id="curp" class="form-control" placeholder="Ingrese CURP">
+            </div>
+            <div class="form-group">
+                <label for="birthday">Fecha de nacimiento</label>
+                <input type="date" id="cumpleanos" name="cumpleanos">
+            </div>
+            <div class="form-group">
+                <label for="text">Tipo de personal</label> <br>
+                <input type="radio" id="tipo" name="cirujano" value="1">
+                <label for="cirujano">Cirujano/a</label><br>
+                <input type="radio" id="tipo" name="enfermero" value="2">
+                <label for="enfermero">Enfermera/o</label><br>
+            </div>
+            <div class="form-group">
+                <label for="text">Especialidad</label>
+                <select id="especialidad" name="especialidad">
+                    <option value="1">Cirujano general</option>
+                    <option value="2">Cardiologo</option>
+                    <option value="3">Enfermeria pediatrica</option>
+            </div>
+            <input type="button" value="submit">
         </form>
     </section>
 </main>
