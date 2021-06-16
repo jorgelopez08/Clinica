@@ -10,6 +10,14 @@ def register():
 def reg_personal():
     return render_template("r_personal.html")
 
+@auth.route('/register/pacientes')
+def reg_pacientes():
+    return render_template("r_pacientes.html")
+
+@auth.route('/register/procedimiento')
+def reg_procedimientos():
+    return render_template("r_procedimientos.html")
+
 @auth.route('/login')
 def login():
     return render_template("login.html")

@@ -73,6 +73,7 @@ class Procedimientos(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_paciente = db.Column(db.Integer, db.ForeignKey("Pacientes.id"))
     id_personal_medico = db.Column(db.Integer, db.ForeignKey("Personal_medico.id"))
+    id_tipo = db.Column(db.Integer, db.ForeignKey("Tipo_procedimiento.id"))
     nota = db.Column(db.String(200))
     fecha_entrada = db.Column(db.Date)
     fecha_salida = db.Column(db.Date)

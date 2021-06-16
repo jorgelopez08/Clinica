@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}
+    Registro Personal
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="main-form">
+        <h1>Registro de procedimientos</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="text">Id del paciente</label>
+                <input type="text" name="id paciente" id="paciente" class="form-control" placeholder="Ingrese el ID del paciente">
+            </div>
+            <div class="form-group">
+                <label for="text">Id del personal médico</label>
+                <input type="text" name="id personal" id="personal" class="form-control" placeholder="Ingrese ID del personal médico">
+            </div>
+            <div class="form-group">
+                <label for="text">Notas</label>
+                <input type="text" name="nota" id="nota" class="form-control" placeholder="Ingrese notas del procedimiento">
+            </div>
+            <div class="form-group">
+                <label for="entrada">Fecha de entrada</label>
+                <input type="date" id="entrada" name="entrada">
+            </div>
+            <div class="form-group">
+                <label for="salida">Fecha de entrada</label>
+                <input type="date" id="salida" name="salida">
+            </div>
+            <div class="form-group">
+                <label for="text">Tipo de procedimiento</label> <br>
+                <input type="radio" id="tipo" name="tipo" value="1">
+                <label for="text">Quirurgico</label> <br>
+                <input type="radio" id="tipo" name="tipo" value="2">
+                <label for="text">No quirurgico</label> <br> <br>
+            </div>
+            <input type="submit" value="submit">
+        </form>
+    </section>
+</main>
+{% endblock %}
