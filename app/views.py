@@ -16,7 +16,6 @@ def home():
 def pacientes():
     context = {
         'title':"Pacientes",
-        #'lista':["chiquita", "preciosa", "mi amor", "berecita hermosa", "mi niña"]
         'datos':Pacientes.query.all()
     }
     return render_template("show.html",**context)
@@ -27,7 +26,6 @@ def doctores():
         'title':"Personal médico",
         'tipo':Tipo_personal.query.all(),
         'extra':Especialidades.query.all(),
-        #'lista':["chiquita", "preciosa", "mi amor", "berecita hermosa", "mi niña"]
         'datos':Personal_medico.query.all()
     }
     return render_template("show.html", **context)
@@ -46,7 +44,6 @@ def admin():
 def procedimientos():
     context = {
         'title':"Procedimientos",
-        #'lista':["chiquita", "preciosa", "mi amor", "berecita hermosa", "mi niña"]
         'datos':Procedimientos.query.all()
     }
     return render_template("show.html", **context)
