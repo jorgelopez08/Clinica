@@ -144,4 +144,4 @@ $add_bono$ LANGUAGE plpgsql;
 CREATE TRIGGER add_bono
     AFTER INSERT ON administrativos
     FOR EACH ROW
-    EXECUTE FUNCTION descuento();
+    EXECUTE FUNCTION bono();
