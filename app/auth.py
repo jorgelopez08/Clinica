@@ -32,17 +32,29 @@ def reg_personal():
     else:
         return render_template("r_personal.html")
 
-@auth.route('/register/personal/<int:id>', methods=['POST'])
+@auth.route('/register/personal/<int:id>', methods=['GET','POST'])
 def update_personal(id):
-    ses.query(Personal_medico).filter_by(id = id).update(dict(nombre = request.form.get('nombre'), apellido_materno =
-                             request.form.get('ap_mat'),
-                             apellido_paterno = request.form.get('ap_pat'), curp = request.form.get('curp'),
-                             tipo_personal = request.form.get('tipo'),
-                             fecha_nacimiento = request.form.get('cumpleanos'),
-                             especialidad = request.form.get('especialidad')))
+    data = {
+        'data':Personal_medico.query.filter_by(id=id).first()
+    }
+    if request.method == 'POST':
+        ses.query(Personal_medico).filter_by(id = id).update(dict(nombre = request.form.get('nombre'), 
+                                apellido_materno = request.form.get('ap_mat'),
+                                apellido_paterno = request.form.get('ap_pat'), curp = request.form.get('curp'),
+                                tipo_personal = request.form.get('tipo'),
+                                fecha_nacimiento = request.form.get('cumpleanos'),
+                                especialidad = request.form.get('especialidad')))
+        ses.commit()
+        print(f'Values {id} \n Form {request.form}')
+        #Aquí debe de ir vista para success
+        return redirect(url_for('views.doctores'))
+    return render_template('edit_personal.html', **data)
+
+@auth.route('/delete/personal/<int:id>',methods=['GET','POST'])
+def delete_personal(id):
+    ses.query(Personal_medico).filter_by(id=id).delete(synchronize_session=False)
     ses.commit()
-    print(f'Values {id} \n Form {request.form}')
-    #Aquí debe de ir vista para success
+    return redirect(url_for('views.doctores'))
 
 @auth.route('/register/pacientes', methods=['GET','POST'])
 def reg_pacientes():
@@ -59,16 +71,29 @@ def reg_pacientes():
     else:
         return render_template("r_pacientes.html")
 
-@auth.route('/register/pacientes/<int:id>', methods=['PUT'])
+@auth.route('/register/pacientes/<int:id>', methods=['GET','POST'])
 def update_pacientes(id):
-    ses.query(Pacientes).filter_by(id = id).update(dict(nombre = request.form.get('nombre'), apellido_materno =
-                         request.form.get('ap_mat'),
-                         apellido_paterno = request.form.get('ap_pat'),
-                         padecimiento = request.form.get('padecimiento'),
-                         fecha_nacimiento = request.form.get('cumpleanos'), alergias = request.form.get('alergias')))
-    ses.commit()
-    print(f'Values {id} \n Form {request.form}')
+
+    data = {
+        'data':Pacientes.query.filter_by(id=id).first()
+    }
+    if request.method == 'POST':
+        ses.query(Pacientes).filter_by(id = id).update(dict(nombre = request.form.get('nombre'), apellido_materno =
+                            request.form.get('ap_mat'),
+                            apellido_paterno = request.form.get('ap_pat'),
+                            padecimiento = request.form.get('padecimiento'),
+                            fecha_nacimiento = request.form.get('cumpleanos'), alergias = request.form.get('alergias')))
+        ses.commit()
+        print(f'Values {id} \n Form {request.form}')
+        return redirect(url_for('views.pacientes'))
     #Aquí debe de ir vista para success
+    return render_template('edit_paciente.html', **data)
+
+@auth.route('/delete/pacientes/<int:id>',methods=['GET','POST'])
+def delete_paciente(id):
+    ses.query(Pacientes).filter_by(id=id).delete(synchronize_session=False)
+    ses.commit()
+    return redirect(url_for('views.pacientes'))
 
 @auth.route('/register/procedimiento', methods=['GET','POST'])
 def reg_procedimientos():
@@ -86,7 +111,7 @@ def reg_procedimientos():
     else:
         return render_template("r_procedimientos.html")
 
-@auth.route('/register/procedimiento/<int:id>', methods=['PUT'])
+@auth.route('/register/procedimiento/<int:id>', methods=['GET','POST'])
 def update_procedimientos(id):
     ses.query(Procedimientos).filter_by(id = id).update(dict( id_paciente=request.form.get('paciente'),
                                    id_personal_medico = request.form.get('personal'), id_tipo = request.form.get('tipo')
@@ -154,13 +179,14 @@ def update_area(id):
 def reg_administrativo():
     if request.method == 'POST':
         admin = Administrativos(nombre = request.form.get('nombre'), apellido_materno = request.form.get('ap_mat'),
-                                apellido_paterno = request.form.get('ap_pat'), id_area = request.form.get('area'))
+                                apellido_paterno = request.form.get('ap_pat'), id_area = request.form.get('area'), 
+                                sueldo = request.form.get('sueldo'))
         ses.add(admin)
         ses.commit()
         print(f'Values {admin.id} \n Form {request.form}')
         # Aquí debe de ir vista para success
     else:
-        return render_template("r_procedimientos.html") #ToDo:Cambiar a pantalla de registro de tipo de personal
+        return render_template("r_administracion.html") #ToDo:Cambiar a pantalla de registro de tipo de personal
 
 @auth.route('/register/administrativo/<int:id>', methods=['PUT'])
 def update_administrativo(id):

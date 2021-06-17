@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+    Registro Personal
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="main-form">
+        <form method="POST">
+            <h1>Edición de personal</h1>
+            <div class="form-group">
+                <label for="text">Nombre</label>
+                <input type="text" value="{{ data.nombre }}" name="nombre" id="nombre" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="text">Apellido paterno</label>
+                <input type="text" value="{{ data.apellido_paterno }}" name="ap_pat" id="ap_pat" class="form-control" placeholder="Ingrese apellido paterno">
+            </div>
+            <div class="form-group">
+                <label for="text">Apellido materno</label>
+                <input type="text" value="{{ data.apellido_materno }}" name="ap_mat" id="ap_mat" class="form-control" placeholder="Ingrese apellido materno">
+            </div>
+            <div class="form-group">
+                <label for="birthday">Fecha de nacimiento</label>
+                <input type="date" value="{{ data.fecha_nacimiento }}"id="cumpleanos" name="cumpleanos">
+            </div>
+            <div class="form-group">
+                <label for="text">Alergias</label>
+                <input type="text" value="{{ data.alergias }}" style="height: 60px;" name="alergias" id="alergias" class="form-control" placeholder="Alergias (separadas por comas ',')">
+            </div>
+            <div class="form-group">
+                <label for="text">Padecimiento</label>
+                <input type="text" value="{{ data.padecimiento }}" style="height: 60px;" name="padecimiento" id="padecimiento" class="form-control" placeholder="Ingrese padecimiento">
+            </div>
+            <input type="submit" value="submit">
+        </form>
+    </section>
+</main>
+{% endblock %}

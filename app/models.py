@@ -45,6 +45,7 @@ class Administrativos(db.Model):
     apellido_paterno = db.Column(db.String(20))
     apellido_materno = db.Column(db.String(20))
     id_area = db.Column(db.Integer, db.ForeignKey("area.id"))
+    sueldo = db.Column(db.Float)
 
 class Cobro(db.Model):
     __tablename__ = 'cobro'

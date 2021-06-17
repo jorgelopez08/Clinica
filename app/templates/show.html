@@ -13,21 +13,33 @@
             <h5>Fecha de nacimiento: {{ elemento.fecha_nacimiento}}</h3> 
             {% if title=="Pacientes"%}
             <h5>Padecimiento: {{ elemento.padecimiento}}</h3> 
-            <h5>Alergias: {{ elemento.alergias}}</h3> 
+            <h5>Alergias: {{ elemento.alergias}}</h3>
+
+            <button type="button" >
+            <a href="/register/pacientes/{{elemento.id}}" style="color: black;">Editar</a>
+            </button>
+            <button type="button" >
+            <a href="/delete/pacientes/{{elemento.id}}" style="color: black;">Eliminar</a>
+            </button>
             {% elif title == "Personal médico" %}
             {% for x in tipo%}
-            {% if x.id == elemento.tipo_personal %}
-            <h5>Tipo de personal médico: {{x.descripcion}}</h3> 
-            {% endif %}
+                {% if x.id == elemento.tipo_personal %}
+                <h5>Tipo de personal médico: {{x.descripcion}}</h3> 
+                {% endif %}
             {% endfor %}
-            {% if extra %}
-            {% for y in extra%}
-            {% if y.id == elemento.especialidad %}
-            <h5>Especialidad: {{ y.descripcion }}</h3> 
+                {% if extra %}
+                {% for y in extra%}
+                    {% if y.id == elemento.especialidad %}
+                    <h5>Especialidad: {{ y.descripcion }}</h3> 
+                    {% endif %}
+                {% endfor %}
             {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% elif title == "Administrativos" %}
+                <button type="button" >
+                <a href="/register/personal/{{elemento.id}}" style="color: black;">Editar</a>
+                </button>
+                <button type="button" >
+                <a href="/delete/personal/{{elemento.id}}" style="color: black;">Eliminar</a>
+                </button>
             
             {% endif %}
         </li>

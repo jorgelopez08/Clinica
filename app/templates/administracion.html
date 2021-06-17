@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+<section class="show">
+    <ul>
+        {% for elemento in datos %}
+        <li class="show-element">
+            <h3>Id: {{ elemento.id }}</h2>
+            <h3>Nombre: {{elemento.nombre}} {{ elemento.apellido_paterno}} {{ elemento.apellido_materno}}</h2>
+                {%for area in tipo %}
+                {% if area.id == elemento.id_area %}
+                    <h5>Area: {{ area.descripcion }}</h5>
+                {% endif %}
+                {% endfor %}
+            <h5>sueldo: {{ elemento.sueldo }}</h5>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

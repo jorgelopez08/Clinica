@@ -49,6 +49,7 @@ create table administrativos(
 	apellido_materno varchar(20),
 	apellido_paterno varchar(20),
 	id_area integer,
+	cobro decimal(10,2),
 	primary key (id),
 	constraint fk_id_area foreign key (id_area) references area(id)
 );
@@ -58,7 +59,7 @@ create table cobro(
 	id_administrativo integer,
 	id_paciente integer,
 	fecha date,
-	cobro decimal(8,2),
+	cobro decimal(10,2),
 	constraint fk_id_administrativo foreign key(id_administrativo) references administrativos(id),
 	constraint fk_id_paciente foreign key (id_paciente) references pacientes(id)
 );
@@ -116,3 +117,31 @@ create table procedimientos(
 	constraint fk_id_paciente foreign key (id_paciente) references pacientes(id),
 	constraint fk_id_personal_medico foreign key (id_personal_medico) references personal_medico (id)
 );
+
+
+CREATE FUNCTION iva() RETURNS trigger
+AS $add_iva$
+BEGIN
+    UPDATE cobro SET cobro = (NEW.cobro*1.16) WHERE id=NEW.id;
+    RETURN NEW;
+END;
+$add_iva$ LANGUAGE plpgsql;
+
+CREATE TRIGGER add_iva
+    AFTER INSERT ON cobro
+    FOR EACH ROW
+    EXECUTE FUNCTION iva();
+
+
+CREATE FUNCTION bono() RETURNS trigger
+AS $add_bono$
+BEGIN
+    UPDATE administrativos SET sueldo = (NEW.cobro*1.10) WHERE id=NEW.id;
+    RETURN NEW;
+END;
+$add_bono$ LANGUAGE plpgsql;
+
+CREATE TRIGGER add_bono
+    AFTER INSERT ON administrativos
+    FOR EACH ROW
+    EXECUTE FUNCTION descuento();
