@@ -116,3 +116,56 @@ a{
 .register-main a:hover{
     box-shadow: 0 0 11px var(--gris);
 }
+
+/* ingreso de registros */
+.main-form{
+    display: flex;
+    margin: auto;
+    margin-top: 15px;
+    justify-content: center;
+    width: 500px;
+    border: var(--gris) solid 1px;
+    border-radius: 5px;
+}
+
+.main-form h1{
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.main-form label{
+    font-size: 18px;
+    font-weight: bold;
+}
+input{
+    width: 100%;
+    border: var(--gris) solid 1px;
+    border-radius: 5px;
+}
+input[type=radio]{
+    width: 10%;
+}
+input[type=submit]{
+    background-color: var(--azul-rey);
+    border: var(--gris-claro) solid 1px;
+    height: 30px;
+    margin: 5px 0px;
+}
+
+/* muestra de registros */
+
+.show{
+    margin: auto;
+    margin-top: 15px;
+    width: 500px;
+}
+.show-element{
+    border: var(--gris) solid 1px;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    justify-content: center;
+}

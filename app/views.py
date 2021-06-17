@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from sqlalchemy.orm import session
 from sqlalchemy.orm.session import Session
-from .models import Administrativos, Especialidades, Pacientes, Personal_medico, Procedimientos, Tipo_personal
+from .models import Administrativos, Especialidades, Pacientes, Personal_medico, Procedimientos, Tipo_personal, Tipo_procedimiento
 from sqlalchemy.orm import sessionmaker
 
 Session = sessionmaker()
@@ -44,6 +44,8 @@ def admin():
 def procedimientos():
     context = {
         'title':"Procedimientos",
+        'extra':Tipo_procedimiento.query.all(),
         'datos':Procedimientos.query.all()
     }
-    return render_template("show.html", **context)
+    print(context['extra'])
+    return render_template("procedimientos.html", **context)

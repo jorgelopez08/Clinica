@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template, request
+from flask.helpers import url_for
+from app import views
+from flask import Blueprint, render_template, request, redirect
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from .models import Administrativos, Especialidades, Pacientes, Personal_medico, Procedimientos, Tipo_personal
@@ -24,6 +26,7 @@ def reg_personal():
         ses.add(medico)
         ses.commit()
         print(f'Values {medico.id} \n Form {request.form}')
+        return redirect(url_for('views.doctores'))
         #Aquí debe de ir vista para success
     else:
         return render_template("r_personal.html")
@@ -38,6 +41,7 @@ def reg_pacientes():
         ses.add(paciente)
         ses.commit()
         print(f'Values {paciente.id} \n Form {request.form}')
+        return redirect(url_for('views.pacientes'))
         #Aquí debe de ir vista para success
     else:
         return render_template("r_pacientes.html")
@@ -45,18 +49,20 @@ def reg_pacientes():
 @auth.route('/register/procedimiento', methods=['GET','POST'])
 def reg_procedimientos():
     if request.method == 'POST':
-        procedimiento = Procedimientos(id_paciente=request.form.get('paciente'), id_personal_medico =
-                                request.form.get('personal'), id_tipo = request.form.get('tipo'),
+        procedimiento = Procedimientos(id_paciente=request.form.get('id_paciente'), id_personal_medico =
+                                request.form.get('id_personal'), id_tipo = request.form.get('tipo'),
                                 nota = request.form.get('nota'), fecha_entrada = request.form.get('entrada'),
                                 fecha_salida = request.form.get('salida'))
         ses.add(procedimiento)
         ses.commit()
+        print(request.form.get('tipo'))
         print(f'Values {procedimiento.id} \n Form {request.form}')
+        return redirect(url_for('views.procedimientos'))
         # Aquí debe de ir vista para success
     else:
         return render_template("r_procedimientos.html")
 
-@auth.route('/register/procedimiento', methods=['GET','POST'])
+''' @auth.route('/register/procedimiento', methods=['GET','POST'])
 def reg_procedimientos():
     if request.method == 'POST':
         procedimiento = Procedimientos(id_paciente=request.form.get('paciente'), id_personal_medico =
@@ -68,7 +74,7 @@ def reg_procedimientos():
         print(f'Values {procedimiento.id} \n Form {request.form}')
         # Aquí debe de ir vista para success
     else:
-        return render_template("r_procedimientos.html")
+        return render_template("r_procedimientos.html") '''
 
 @auth.route('/login', methods=['GET','POST'])
 def login():

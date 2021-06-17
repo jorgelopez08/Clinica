@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+<section class="show">
+    {% for elemento in datos %}
+    <li class="show-element">
+        <h3>Id: {{ elemento.id }}</h2>
+        <h3>Paciente: {{elemento.id_paciente}}</h2>
+        <h5>Personal médico: {{elemento.id_personal_medico}}</h2>
+        {% for x in extra %}
+        {% if x.id == elemento.id_tipo %}
+        <h5>Tipo: {{x.descripcion}}</h2>
+        {% endif %}
+        {% endfor %}
+        {% if elemento.id_tipo == 1 %}
+        <h5>Tipo de procedimiento: Quirurgico</h3>
+        {% elif elemento.id_tipo == 2 %}
+        <h5>Tipo de procedimiento: No Quirurgico</h3>
+        {% endif %}
+        <h5>Fecha de entrada: {{ elemento.fecha_entrada}}</h3> 
+        <h5>Fecha de entrada: {{ elemento.fecha_salida}}</h3> 
+        <h5>Nota: {{ elemento.nota}}</h3> 
+    </li>
+    {% endfor %}
+</section>
+    {% endblock %}
